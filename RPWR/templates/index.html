@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<table style="width: 100%;">
+    <tr>
+        <th>Search : </th>
+        <th>
+            <form>
+                <input style="width: 90%;" name="serch"></input>
+                <button type="submit">Search</button>
+            </form>
+        </th>
+    </tr>
+</table>
+<hr>
+<table border="2" style="padding: 3rem;">
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Click</th>
+    </tr>
+    {% for recipe in recipes %}
+    <tr>
+        <td>{{recipe.title}}</td>
+        <td>{{recipe.description}}</td>
+        <td><img src="{{recipe.image}}" height="95rem"></td>
+        <td>
+            <a href="{% url 'details' recipe.id %}">
+            <button>Click</button>
+        </a>
+        </td>
+
+    </tr>
+    {% endfor %}
+</table>
+<hr>
+{% endblock %}
